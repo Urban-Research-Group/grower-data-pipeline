@@ -1,0 +1,6 @@
+county,customers_served,per_outage_customers_affected,timestamp
+name,customersserved,customersaffected,timestamp
+county,,customersoutnow,
+city_nam,,customersoutinitially,
+,,impactedcustomers,
+,,est_customers,
