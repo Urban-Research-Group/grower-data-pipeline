@@ -1,6 +1,11 @@
 raw,standard
+name,county
+county,county
+city_nam,county
 customersaffected,per_outage_customers_affected
+customersoutnow,per_outage_customers_affected
+customersoutinitially,per_outage_customers_affected
+impactedcustomers,per_outage_customers_affected
+est_customers,per_outage_customers_affected
 customersserved,customers_served
 timestamp,timestamp
-name,county
-customersoutnow,per_outage_customers_affected
