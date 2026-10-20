@@ -20,3 +20,10 @@ CustomersServed,customers_served
 customersServed,customers_served
 cust_s,customers_served
 timestamp,timestamp
+name,county
+area_name,county
+total_cust,customers_served
+count,customers_served
+accounts,customers_served
+affected,per_outage_customers_affected
+customer outages,per_outage_customers_affected

@@ -110,6 +110,7 @@ if __name__ == "__main__":
     if args.dry_run:       
         formatted_df = result.data[1]
         # print(formatted_df)
+        os.makedirs("testing", exist_ok=True)
         formatted_df.to_csv(os.path.join("testing", f"{args.state}_baseline.csv"), index=False)
         print(f"Dry run complete for {args.state}, {target_date}")
 
