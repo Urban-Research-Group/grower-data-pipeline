@@ -1,26 +1,351 @@
-raw,standard,score
-clinton,clinton,100.0
-rockland,rockland,100.0
-new marlboro,new york  (manhattan),85.5
-delaware,delaware,100.0
-schoharie,schoharie,100.0
-warren,warren,100.0
-ulster,ulster,100.0
-dutchess,dutchess,100.0
-essex,essex,100.0
-putnam,putnam,100.0
-monroe,monroe,100.0
-suffolk,suffolk,100.0
-orange,orange,100.0
-sullivan,sullivan,100.0
-columbia,columbia,100.0
-otsego,otsego,100.0
-ware,delaware,90.0
-new salem,new york  (manhattan),85.5
-mount washington,washington,90.0
-greene,greene,100.0
-albany,albany,100.0
-franklin,franklin,100.0
-new braintree,new york  (manhattan),85.5
-hamilton,hamilton,100.0
-lawrence,st. lawrence,90.0
+raw,standard,score,emc
+albany,albany,100.0,
+allegany,allegany,100.0,
+bronx,bronx,100.0,
+broome,broome,100.0,
+cattaraugus,cattaraugus,100.0,
+cayuga,cayuga,100.0,
+chautauqua,chautauqua,100.0,
+chemung,chemung,100.0,
+chenango,chenango,100.0,
+clinton,clinton,100.0,
+columbia,columbia,100.0,
+cortland,cortland,100.0,
+delaware,delaware,100.0,
+dutchess,dutchess,100.0,
+erie,erie,100.0,
+essex,essex,100.0,
+franklin,franklin,100.0,
+fulton,fulton,100.0,
+genesee,genesee,100.0,
+greene,greene,100.0,
+hamilton,hamilton,100.0,
+herkimer,herkimer,100.0,
+jefferson,jefferson,100.0,
+kings,kings,100.0,
+lewis,lewis,100.0,
+livingston,livingston,100.0,
+madison,madison,100.0,
+monroe,monroe,100.0,
+montgomery,montgomery,100.0,
+nassau,nassau,100.0,
+new york,new york,100.0,
+niagara,niagara,100.0,
+oneida,oneida,100.0,
+onondaga,onondaga,100.0,
+ontario,ontario,100.0,
+orange,orange,100.0,
+orleans,orleans,100.0,
+oswego,oswego,100.0,
+otsego,otsego,100.0,
+putnam,putnam,100.0,
+queens,queens,100.0,
+rensselaer,rensselaer,100.0,
+richmond,richmond,100.0,
+rockland,rockland,100.0,
+st. lawrence,st. lawrence,100.0,
+saratoga,saratoga,100.0,
+schenectady,schenectady,100.0,
+schoharie,schoharie,100.0,
+schuyler,schuyler,100.0,
+seneca,seneca,100.0,
+steuben,steuben,100.0,
+suffolk,suffolk,100.0,
+sullivan,sullivan,100.0,
+tioga,tioga,100.0,
+tompkins,tompkins,100.0,
+ulster,ulster,100.0,
+warren,warren,100.0,
+washington,washington,100.0,
+wayne,wayne,100.0,
+westchester,westchester,100.0,
+wyoming,wyoming,100.0,
+yates,yates,100.0,
+albany county,albany,100.0,
+allegany county,allegany,100.0,
+bronx county,bronx,100.0,
+broome county,broome,100.0,
+cattaraugus county,cattaraugus,100.0,
+cayuga county,cayuga,100.0,
+chautauqua county,chautauqua,100.0,
+chemung county,chemung,100.0,
+chenango county,chenango,100.0,
+clinton county,clinton,100.0,
+columbia county,columbia,100.0,
+cortland county,cortland,100.0,
+delaware county,delaware,100.0,
+dutchess county,dutchess,100.0,
+erie county,erie,100.0,
+essex county,essex,100.0,
+franklin county,franklin,100.0,
+fulton county,fulton,100.0,
+genesee county,genesee,100.0,
+greene county,greene,100.0,
+hamilton county,hamilton,100.0,
+herkimer county,herkimer,100.0,
+jefferson county,jefferson,100.0,
+kings county,kings,100.0,
+lewis county,lewis,100.0,
+livingston county,livingston,100.0,
+madison county,madison,100.0,
+monroe county,monroe,100.0,
+montgomery county,montgomery,100.0,
+nassau county,nassau,100.0,
+new york county,new york,100.0,
+niagara county,niagara,100.0,
+oneida county,oneida,100.0,
+onondaga county,onondaga,100.0,
+ontario county,ontario,100.0,
+orange county,orange,100.0,
+orleans county,orleans,100.0,
+oswego county,oswego,100.0,
+otsego county,otsego,100.0,
+putnam county,putnam,100.0,
+queens county,queens,100.0,
+rensselaer county,rensselaer,100.0,
+richmond county,richmond,100.0,
+rockland county,rockland,100.0,
+st. lawrence county,st. lawrence,100.0,
+saratoga county,saratoga,100.0,
+schenectady county,schenectady,100.0,
+schoharie county,schoharie,100.0,
+schuyler county,schuyler,100.0,
+seneca county,seneca,100.0,
+steuben county,steuben,100.0,
+suffolk county,suffolk,100.0,
+sullivan county,sullivan,100.0,
+tioga county,tioga,100.0,
+tompkins county,tompkins,100.0,
+ulster county,ulster,100.0,
+warren county,warren,100.0,
+washington county,washington,100.0,
+wayne county,wayne,100.0,
+westchester county,westchester,100.0,
+wyoming county,wyoming,100.0,
+yates county,yates,100.0,
+st lawrence,st. lawrence,100.0,
+saint lawrence,st. lawrence,100.0,
+st lawrence county,st. lawrence,100.0,
+saint lawrence county,st. lawrence,100.0,
+brooklyn,kings,100.0,
+manhattan,new york,100.0,
+staten island,richmond,100.0,
+the bronx,bronx,100.0,
+ardsley village,westchester,100.0,conedison
+battery park city,new york,100.0,conedison
+bay ridge,kings,100.0,conedison
+bedford town,westchester,100.0,conedison
+beekman,new york,100.0,conedison
+borden,queens,90.0,conedison
+borough hall,kings,100.0,conedison
+bowling green,new york,100.0,conedison
+briarcliff manor village,westchester,100.0,conedison
+brighton beach,kings,100.0,conedison
+bronxville village,westchester,100.0,conedison
+buchanan village,westchester,100.0,conedison
+canal,new york,100.0,conedison
+central bronx,bronx,100.0,conedison
+central park,new york,100.0,conedison
+chelsea,new york,100.0,conedison
+city hall,new york,100.0,conedison
+columbus circle,new york,100.0,conedison
+conedfuzzy_bronx other,bronx,100.0,conedison
+conedfuzzy_brooklyn other,kings,100.0,conedison
+conedfuzzy_queens other,queens,100.0,conedison
+conedfuzzy_staten island other,richmond,100.0,conedison
+conedfuzzy_westchester other,westchester,100.0,conedison
+cooper square,new york,100.0,conedison
+cortlandt,new york,100.0,conedison
+cortlandt town,westchester,100.0,conedison
+croton-on-hudson village,westchester,100.0,conedison
+crown heights,kings,100.0,conedison
+dobbs ferry village,westchester,100.0,conedison
+eastchester town,westchester,100.0,conedison
+elmsford village,westchester,100.0,conedison
+empire,new york,100.0,conedison
+fashion,new york,100.0,conedison
+flatbush,kings,100.0,conedison
+flushing,queens,100.0,conedison
+fordham,bronx,100.0,conedison
+fox hills,richmond,100.0,conedison
+fresh kills,richmond,100.0,conedison
+fulton,new york,100.0,conedison
+grand central,new york,100.0,conedison
+greeley square,new york,100.0,conedison
+greenburgh town,westchester,100.0,conedison
+greenwich,new york,100.0,conedison
+harlem,new york,100.0,conedison
+harrison village,westchester,100.0,conedison
+hastings-on-hudson village,westchester,100.0,conedison
+herald square,new york,100.0,conedison
+hudson,new york,100.0,conedison
+hunter,new york,90.0,conedison
+irvington village,westchester,100.0,conedison
+jackson heights,queens,100.0,conedison
+jamaica,queens,100.0,conedison
+kips bay,new york,100.0,conedison
+larchmont village,westchester,100.0,conedison
+lenox hill,new york,100.0,conedison
+lincoln square,new york,100.0,conedison
+long island city,queens,100.0,conedison
+madison square,new york,100.0,conedison
+mamaroneck town,westchester,100.0,conedison
+mamaroneck village,westchester,100.0,conedison
+maspeth,queens,100.0,conedison
+midtown,new york,100.0,conedison
+mount kisco village,westchester,100.0,conedison
+mount pleasant town,westchester,100.0,conedison
+mount vernon city,westchester,100.0,conedison
+new castle town,westchester,100.0,conedison
+new rochelle city,westchester,100.0,conedison
+north castle town,westchester,100.0,conedison
+northeast bronx,bronx,100.0,conedison
+ocean parkway,kings,100.0,conedison
+ossining town,westchester,100.0,conedison
+ossining village,westchester,100.0,conedison
+park place,new york,100.0,conedison
+park slope,kings,100.0,conedison
+peekskill city,westchester,100.0,conedison
+pelham manor village,westchester,100.0,conedison
+pelham village,westchester,100.0,conedison
+pennsylvania,new york,100.0,conedison
+plaza,new york,100.0,conedison
+pleasantville village,westchester,100.0,conedison
+port chester village,westchester,100.0,conedison
+prospect park,kings,100.0,conedison
+randalls island,new york,100.0,conedison
+rego park,queens,100.0,conedison
+richmond hill,queens,100.0,conedison
+ridgewood,kings,90.0,conedison
+riverdale,bronx,100.0,conedison
+rockefeller center,new york,100.0,conedison
+roosevelt,new york,90.0,conedison
+rye brook village,westchester,100.0,conedison
+rye city,westchester,100.0,conedison
+scarsdale village,westchester,100.0,conedison
+sheepshead bay,kings,100.0,conedison
+sheridan square,new york,100.0,conedison
+sleepy hollow village,westchester,100.0,conedison
+southeast bronx,bronx,100.0,conedison
+sunnyside,queens,100.0,conedison
+sutton,new york,100.0,conedison
+tarrytown village,westchester,100.0,conedison
+times square,new york,100.0,conedison
+triboro,new york,90.0,conedison
+tuckahoe village,westchester,100.0,conedison
+turtle bay,new york,100.0,conedison
+wainwright,richmond,100.0,conedison
+washington heights,new york,100.0,conedison
+west bronx,bronx,100.0,conedison
+white plains city,westchester,100.0,conedison
+williamsburg,kings,100.0,conedison
+willowbrook,richmond,100.0,conedison
+woodrow,richmond,100.0,conedison
+yonkers city,westchester,100.0,conedison
+yorktown town,westchester,100.0,conedison
+yorkville,new york,100.0,conedison
+delaware,delaware,100.0,dcec
+otsego,otsego,100.0,dcec
+schoharie,schoharie,100.0,dcec
+airmont,rockland,100.0,orange&rockland
+blooming grove,orange,100.0,orange&rockland
+bloomingburg,sullivan,100.0,orange&rockland
+chester town,orange,100.0,orange&rockland
+chester village,orange,100.0,orange&rockland
+chestnut ridge,rockland,100.0,orange&rockland
+clarkstown,rockland,100.0,orange&rockland
+crawford,orange,100.0,orange&rockland
+deerpark,orange,100.0,orange&rockland
+florida,orange,100.0,orange&rockland
+forestburgh,sullivan,100.0,orange&rockland
+goshen town,orange,100.0,orange&rockland
+goshen village,orange,100.0,orange&rockland
+grand view,rockland,100.0,orange&rockland
+greenville,orange,100.0,orange&rockland
+greenwood lake,orange,100.0,orange&rockland
+harriman - monroe,orange,100.0,orange&rockland
+harriman - woodbury,orange,100.0,orange&rockland
+haverstraw town,rockland,100.0,orange&rockland
+haverstraw village,rockland,100.0,orange&rockland
+highland falls,orange,100.0,orange&rockland
+highlands,orange,100.0,orange&rockland
+hillburn,rockland,100.0,orange&rockland
+kaser,rockland,100.0,orange&rockland
+kiryas joel,orange,100.0,orange&rockland
+lumberland,sullivan,100.0,orange&rockland
+mamakating,sullivan,100.0,orange&rockland
+middletown,orange,100.0,orange&rockland
+minisink,orange,100.0,orange&rockland
+monroe town,orange,100.0,orange&rockland
+monroe village,orange,100.0,orange&rockland
+montebello,rockland,100.0,orange&rockland
+mount hope,orange,100.0,orange&rockland
+new hempstead,rockland,100.0,orange&rockland
+new square,rockland,100.0,orange&rockland
+nyack - clarkstown,rockland,100.0,orange&rockland
+nyack - orangetown,rockland,100.0,orange&rockland
+orangetown,rockland,100.0,orange&rockland
+otisville,orange,100.0,orange&rockland
+piermont,rockland,100.0,orange&rockland
+pomona - haverstraw,rockland,100.0,orange&rockland
+pomona - ramapo,rockland,100.0,orange&rockland
+port jervis,orange,100.0,orange&rockland
+ramapo,rockland,100.0,orange&rockland
+sloatsburg,rockland,100.0,orange&rockland
+south blooming grove,orange,100.0,orange&rockland
+south nyack,rockland,100.0,orange&rockland
+spring valley - clarkstown,rockland,100.0,orange&rockland
+spring valley - ramapo,rockland,100.0,orange&rockland
+stony point,rockland,100.0,orange&rockland
+suffern,rockland,100.0,orange&rockland
+tuxedo park,orange,100.0,orange&rockland
+tuxedo town,orange,100.0,orange&rockland
+unionville,orange,100.0,orange&rockland
+upper nyack,rockland,100.0,orange&rockland
+wallkill,orange,100.0,orange&rockland
+warwarsing,ulster,100.0,orange&rockland
+warwick town,orange,100.0,orange&rockland
+warwick village,orange,100.0,orange&rockland
+washingtonville,orange,100.0,orange&rockland
+wawayanda,orange,100.0,orange&rockland
+wesley hills,rockland,100.0,orange&rockland
+west haverstraw,rockland,100.0,orange&rockland
+woodbury,orange,100.0,orange&rockland
+wurtsboro,sullivan,100.0,orange&rockland
+addison,steuben,100.0,stubenrec
+arkwright,chautauqua,100.0,stubenrec
+avoca,steuben,100.0,stubenrec
+bath,steuben,100.0,stubenrec
+bradford,steuben,100.0,stubenrec
+cameron,steuben,100.0,stubenrec
+campbell,steuben,100.0,stubenrec
+canisteo,steuben,100.0,stubenrec
+cherry creek,chautauqua,100.0,stubenrec
+cohocton,steuben,100.0,stubenrec
+conewango,cattaraugus,100.0,stubenrec
+dayton,cattaraugus,100.0,stubenrec
+ellington,chautauqua,100.0,stubenrec
+erwin,steuben,100.0,stubenrec
+fremont,steuben,100.0,stubenrec
+gerry,chautauqua,100.0,stubenrec
+greenwood,steuben,100.0,stubenrec
+hanover,chautauqua,100.0,stubenrec
+hornby,steuben,100.0,stubenrec
+hornellsville,steuben,100.0,stubenrec
+howard,steuben,100.0,stubenrec
+jasper,steuben,100.0,stubenrec
+leon,cattaraugus,100.0,stubenrec
+lindley,steuben,100.0,stubenrec
+napoli,cattaraugus,100.0,stubenrec
+new albion,cattaraugus,100.0,stubenrec
+orange,schuyler,100.0,stubenrec
+rathbone,steuben,100.0,stubenrec
+thurston,steuben,100.0,stubenrec
+troupsburg,steuben,100.0,stubenrec
+tuscarora,steuben,100.0,stubenrec
+urbana,steuben,100.0,stubenrec
+villenova,chautauqua,100.0,stubenrec
+wayland,steuben,100.0,stubenrec
+wayne,steuben,100.0,stubenrec
+west union,steuben,100.0,stubenrec
+woodhull,steuben,100.0,stubenrec

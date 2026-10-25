@@ -24,7 +24,8 @@ class Standardize(Component):
         
         self.col_map = self.get_col_map()         
         self.col_lists = self.get_all_col_lists()   
-        self.county_map = self.get_county_map()     
+        self.county_map = self.get_county_map()
+        self.emc_county_map = self.get_emc_county_map()
         self.raw_county_list = self.get_raw_county_list()
         self.master_county_list = self.get_master_county_list()
 
@@ -82,13 +83,42 @@ class Standardize(Component):
                 
                 for row in reader:
                     if len(row) >= 2:
+                        # Rows with an emc in the 4th column only apply to that provider
+                        if len(row) >= 4 and row[3].strip():
+                            continue
                         raw = row[0].strip().lower()
                         std_name = row[1].strip().lower()
                         county_map[raw] = std_name
         except FileNotFoundError:
             print(f"Warning: county_map.csv not found at {read_path}")
-        
+
         return county_map
+
+    def get_emc_county_map(self):
+        """
+        Provider-specific county mappings, used when a provider reports towns or neighborhoods whose
+        names collide with other places (e.g. the Town of Orange in Schuyler County vs Orange County).
+        Read from an optional 4th 'emc' column in county_map.csv.
+
+        Expected format: {(emc, raw place name) : standardized county name}
+        """
+
+        emc_map = {}
+        read_path = os.path.join(self.base_path, "county_map.csv")
+
+        try:
+            with open(read_path) as f:
+                reader = csv.reader(f)
+                next(reader)
+
+                for row in reader:
+                    if len(row) >= 4 and row[3].strip():
+                        key = (row[3].strip().lower(), row[0].strip().lower())
+                        emc_map[key] = row[1].strip().lower()
+        except FileNotFoundError:
+            pass
+
+        return emc_map
 
     def get_raw_county_list(self):
         """
@@ -273,7 +303,19 @@ class Standardize(Component):
         )
 
         cs = cs.str.replace(r'^([a-z]{2})-', r'\1 - ', regex=True)
-        data['county'] = cs.map(self.county_map)
+        general = cs.map(self.county_map)
+
+        # Provider-specific mappings take precedence over the general map
+        if self.emc_county_map and 'emc' in data.columns:
+            emcs = data['emc'].astype(str).str.strip().str.lower()
+            specific = pd.Series(
+                [self.emc_county_map.get((e, c)) for e, c in zip(emcs, cs)],
+                index=data.index,
+                dtype=object,
+            )
+            data['county'] = specific.where(specific.notna(), general)
+        else:
+            data['county'] = general
 
         # Standardize datatype
         data = data[data['county'].map(type) == str]
@@ -327,8 +369,87 @@ class Standardize(Component):
 
         # Standardize county names
         std_data = self.standardize_county(type_std_data)
-        
+
+        # Roll town/neighborhood-level providers up to one row per county per timestamp
+        std_data = self.aggregate_town_level(std_data)
+
         return [True, std_data]
+
+    def get_town_level_providers(self):
+        """
+        Providers (emc values) that report by town or neighborhood instead of by county, listed one per
+        line in mappings/{STATE}/town_level_providers.txt. Optional: states without the file are unaffected.
+        """
+
+        read_path = os.path.join(self.base_path, "town_level_providers.txt")
+        try:
+            with open(read_path) as f:
+                return {line.strip().lower() for line in f if line.strip() and not line.startswith("#")}
+        except FileNotFoundError:
+            return set()
+
+    def get_served_baseline(self):
+        """
+        County customers served per provider from historicalCustomersServed/{STATE}_customers_served.csv,
+        when that file has an 'emc' column.
+
+        Expected format: {(county, emc) : customers served}
+        """
+
+        read_path = os.path.join("pipeline", "historicalCustomersServed", f"{self.state.upper()}_customers_served.csv")
+        try:
+            df = pd.read_csv(read_path)
+        except FileNotFoundError:
+            return {}
+        if "emc" not in df.columns:
+            return {}
+
+        df = df.dropna(subset=["emc"])
+        return {
+            (str(c).strip().lower(), str(e).strip().lower()): float(v)
+            for c, e, v in zip(df["county"], df["emc"], df["customers_served"])
+        }
+
+    def aggregate_town_level(self, data):
+        """
+        For providers that report by town or neighborhood, each row only covers part of a county. Left as is,
+        the pipeline would treat every town as the whole county: customers served would be the largest single
+        town, and outages in different towns would be read as one changing count.
+
+        This sums customers affected across a county's towns for each timestamp, giving the same one row per
+        county per timestamp that county-level providers report. Customers served is taken from the provider's
+        county baseline (all of its towns, not only those with outages); without a baseline it falls back to the
+        sum of the towns reported at that timestamp.
+        """
+
+        providers = self.get_town_level_providers()
+        if not providers or data.empty or "emc" not in data.columns:
+            return data
+
+        emcs = data["emc"].astype(str).str.strip().str.lower()
+        mask = emcs.isin(providers)
+        if not mask.any():
+            return data
+
+        town = data[mask].assign(emc=emcs[mask])
+        rolled = (
+            town.groupby(["county", "emc", "timestamp"], as_index=False)
+            .agg(
+                per_outage_customers_affected=("per_outage_customers_affected", "sum"),
+                customers_served=("customers_served", "sum"),
+            )
+        )
+
+        baseline = self.get_served_baseline()
+        if baseline:
+            base = pd.Series(
+                [baseline.get((c, e)) for c, e in zip(rolled["county"], rolled["emc"])],
+                index=rolled.index,
+                dtype=float,
+            )
+            rolled["customers_served"] = base.where(base.notna(), rolled["customers_served"])
+
+        return pd.concat([data[~mask], rolled], ignore_index=True)
 
     def run(self, data):
         """
