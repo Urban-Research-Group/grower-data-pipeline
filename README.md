@@ -232,6 +232,7 @@ See [`pipeline/mappings/guide.md`](pipeline/mappings/guide.md) for a full descri
 | `col_map.csv`            | Maps raw column names to standardized column names                              |
 | `raw_col_lists.csv`      | Lists all known raw column name variants per standardized column                |
 | `county_map.csv`         | Maps raw county names to standardized county names                              |
+| `county_map_verified.csv` | Optional hand-checked county mappings that override `county_map.csv`           |
 | `master_county_list.txt` | The canonical list of county names for this state                               |
 | `raw_county_list.txt`    | All raw county name variants seen in the source data                            |
 | `raw_col_names.txt`      | Intermediate scratch file of raw column names (used when building new mappings) |
