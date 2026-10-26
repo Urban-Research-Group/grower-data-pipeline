@@ -32,7 +32,7 @@ jobs:
       - name: Choose states for matrix
         id: choose
         env:
-          ALL_STATES: '["al","ca","fl","ga","il","la","ms","nc","sc"]'
+          ALL_STATES: '["al","ca","fl","ga","il","la","ms","nc","sc","tx"]'
           DEFAULT_MATRIX: '["al"]'
           DISPATCH_STATES: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.states || '' }}
           EVENT_NAME: ${{ github.event_name }}
