@@ -1,26 +1,125 @@
 raw,standard,score
-clinton,clinton,100.0
-rockland,rockland,100.0
-new marlboro,new york  (manhattan),85.5
-delaware,delaware,100.0
-schoharie,schoharie,100.0
-warren,warren,100.0
-ulster,ulster,100.0
-dutchess,dutchess,100.0
-essex,essex,100.0
-putnam,putnam,100.0
-monroe,monroe,100.0
-suffolk,suffolk,100.0
-orange,orange,100.0
-sullivan,sullivan,100.0
-columbia,columbia,100.0
-otsego,otsego,100.0
-ware,delaware,90.0
-new salem,new york  (manhattan),85.5
-mount washington,washington,90.0
-greene,greene,100.0
 albany,albany,100.0
+allegany,allegany,100.0
+bronx,bronx,100.0
+broome,broome,100.0
+cattaraugus,cattaraugus,100.0
+cayuga,cayuga,100.0
+chautauqua,chautauqua,100.0
+chemung,chemung,100.0
+chenango,chenango,100.0
+clinton,clinton,100.0
+columbia,columbia,100.0
+cortland,cortland,100.0
+delaware,delaware,100.0
+dutchess,dutchess,100.0
+erie,erie,100.0
+essex,essex,100.0
 franklin,franklin,100.0
-new braintree,new york  (manhattan),85.5
+fulton,fulton,100.0
+genesee,genesee,100.0
+greene,greene,100.0
 hamilton,hamilton,100.0
-lawrence,st. lawrence,90.0
+herkimer,herkimer,100.0
+jefferson,jefferson,100.0
+kings,kings,100.0
+lewis,lewis,100.0
+livingston,livingston,100.0
+madison,madison,100.0
+monroe,monroe,100.0
+montgomery,montgomery,100.0
+nassau,nassau,100.0
+new york,new york,100.0
+niagara,niagara,100.0
+oneida,oneida,100.0
+onondaga,onondaga,100.0
+ontario,ontario,100.0
+orange,orange,100.0
+orleans,orleans,100.0
+oswego,oswego,100.0
+otsego,otsego,100.0
+putnam,putnam,100.0
+queens,queens,100.0
+rensselaer,rensselaer,100.0
+richmond,richmond,100.0
+rockland,rockland,100.0
+st. lawrence,st. lawrence,100.0
+saratoga,saratoga,100.0
+schenectady,schenectady,100.0
+schoharie,schoharie,100.0
+schuyler,schuyler,100.0
+seneca,seneca,100.0
+steuben,steuben,100.0
+suffolk,suffolk,100.0
+sullivan,sullivan,100.0
+tioga,tioga,100.0
+tompkins,tompkins,100.0
+ulster,ulster,100.0
+warren,warren,100.0
+washington,washington,100.0
+wayne,wayne,100.0
+westchester,westchester,100.0
+wyoming,wyoming,100.0
+yates,yates,100.0
+albany county,albany,100.0
+allegany county,allegany,100.0
+bronx county,bronx,100.0
+broome county,broome,100.0
+cattaraugus county,cattaraugus,100.0
+cayuga county,cayuga,100.0
+chautauqua county,chautauqua,100.0
+chemung county,chemung,100.0
+chenango county,chenango,100.0
+clinton county,clinton,100.0
+columbia county,columbia,100.0
+cortland county,cortland,100.0
+delaware county,delaware,100.0
+dutchess county,dutchess,100.0
+erie county,erie,100.0
+essex county,essex,100.0
+franklin county,franklin,100.0
+fulton county,fulton,100.0
+genesee county,genesee,100.0
+greene county,greene,100.0
+hamilton county,hamilton,100.0
+herkimer county,herkimer,100.0
+jefferson county,jefferson,100.0
+kings county,kings,100.0
+lewis county,lewis,100.0
+livingston county,livingston,100.0
+madison county,madison,100.0
+monroe county,monroe,100.0
+montgomery county,montgomery,100.0
+nassau county,nassau,100.0
+new york county,new york,100.0
+niagara county,niagara,100.0
+oneida county,oneida,100.0
+onondaga county,onondaga,100.0
+ontario county,ontario,100.0
+orange county,orange,100.0
+orleans county,orleans,100.0
+oswego county,oswego,100.0
+otsego county,otsego,100.0
+putnam county,putnam,100.0
+queens county,queens,100.0
+rensselaer county,rensselaer,100.0
+richmond county,richmond,100.0
+rockland county,rockland,100.0
+st. lawrence county,st. lawrence,100.0
+saratoga county,saratoga,100.0
+schenectady county,schenectady,100.0
+schoharie county,schoharie,100.0
+schuyler county,schuyler,100.0
+seneca county,seneca,100.0
+steuben county,steuben,100.0
+suffolk county,suffolk,100.0
+sullivan county,sullivan,100.0
+tioga county,tioga,100.0
+tompkins county,tompkins,100.0
+ulster county,ulster,100.0
+warren county,warren,100.0
+washington county,washington,100.0
+wayne county,wayne,100.0
+westchester county,westchester,100.0
+wyoming county,wyoming,100.0
+yates county,yates,100.0

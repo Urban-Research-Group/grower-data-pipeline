@@ -1,25 +1,22 @@
-cust_s
-name
-emc
-total_outages
-etr_type
-area_name
 # out
-etr_masking
-source_file
-vast_majority
-cust_a
-customersserved
-key
+# served
 % out
-state
-etr_confidence
-percent_cust_a
-customersaffected
-n_out
-etr
-county
-areas
-timestamp
-customersoutnow
+area_name
 areaid
+areas
+county
+cust_a
+cust_s
+emc
+etr
+etr_confidence
+etr_masking
+etr_type
+key
+n_out
+name
+percent_cust_a
+timestamp
+total_outages
+town
+vast_majority
