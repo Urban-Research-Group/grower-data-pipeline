@@ -83,38 +83,39 @@ class Standardize(Component):
                 
                 for row in reader:
                     if len(row) >= 2:
-                        # Rows with an emc in the 4th column only apply to that provider
-                        if len(row) >= 4 and row[3].strip():
-                            continue
                         raw = row[0].strip().lower()
                         std_name = row[1].strip().lower()
                         county_map[raw] = std_name
         except FileNotFoundError:
             print(f"Warning: county_map.csv not found at {read_path}")
-
+        
         return county_map
 
     def get_emc_county_map(self):
         """
         Provider-specific county mappings, used when a provider reports towns or neighborhoods whose
         names collide with other places (e.g. the Town of Orange in Schuyler County vs Orange County).
-        Read from an optional 4th 'emc' column in county_map.csv.
+        Read from rows of county_map_verified.csv that have a value in its optional 'emc' column.
+        Preprocess never writes that file, so these hand-checked rows survive a rerun.
 
         Expected format: {(emc, raw place name) : standardized county name}
         """
 
         emc_map = {}
-        read_path = os.path.join(self.base_path, "county_map.csv")
+        read_path = os.path.join(self.base_path, "county_map_verified.csv")
 
         try:
             with open(read_path) as f:
-                reader = csv.reader(f)
-                next(reader)
+                reader = csv.DictReader(f)
+                if not reader.fieldnames or "emc" not in reader.fieldnames:
+                    return emc_map
 
                 for row in reader:
-                    if len(row) >= 4 and row[3].strip():
-                        key = (row[3].strip().lower(), row[0].strip().lower())
-                        emc_map[key] = row[1].strip().lower()
+                    emc = (row.get("emc") or "").strip().lower()
+                    raw = (row.get("raw") or "").strip().lower()
+                    std_name = (row.get("standard") or "").strip().lower()
+                    if emc and raw and std_name:
+                        emc_map[(emc, raw)] = std_name
         except FileNotFoundError:
             pass
 
