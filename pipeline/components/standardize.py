@@ -98,8 +98,13 @@ class Standardize(Component):
             with open(read_path) as f:
                 reader = csv.reader(f)
                 header = next(reader)
+                emc_col = header.index("emc") if "emc" in header else None
 
                 for row in reader:
+                    # Rows with an emc apply to that provider only, so they stay out of the general map
+                    if emc_col is not None and len(row) > emc_col and row[emc_col].strip():
+                        continue
+
                     if len(row) >= 1 and row[0].strip():
                         raw = row[0].strip().lower()
                         std_name = row[1].strip().lower() if len(row) >= 2 else ""
