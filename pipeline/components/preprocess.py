@@ -97,7 +97,8 @@ class Preprocess(Component):
             if score >= 85:
                 county_map[raw] = [match, score]
 
-        # Write results to csv
+        # Write results to csv. Hand-checked fixes belong in county_map_verified.csv, which this never touches
+        # and which overrides these rows in Standardize.get_county_map.
         output_path = os.path.join(self.base_path, "county_map.csv")
         rows = [(raw, vals[0], vals[1]) for raw, vals in county_map.items()]
         df = pd.DataFrame(rows, columns=["raw", "standard", "score"])
