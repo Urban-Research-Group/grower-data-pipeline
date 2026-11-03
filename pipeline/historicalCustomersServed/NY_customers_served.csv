@@ -1,0 +1,18 @@
+,county,customers_served,timestamp,emc
+0,bronx,481928.0,10-24-2026 00:00:00,conedison
+1,cattaraugus,516.0,10-24-2026 00:00:00,stubenrec
+2,chautauqua,705.0,10-24-2026 00:00:00,stubenrec
+3,delaware,5000.0,10-24-2026 00:00:00,dcec
+4,kings,965878.0,10-24-2026 00:00:00,conedison
+5,new york,758955.0,10-24-2026 00:00:00,conedison
+6,orange,140478.0,10-24-2026 00:00:00,orange&rockland
+7,otsego,44.0,10-24-2026 00:00:00,dcec
+8,queens,868226.0,10-24-2026 00:00:00,conedison
+9,richmond,183590.0,10-24-2026 00:00:00,conedison
+10,rockland,151219.0,10-24-2026 00:00:00,orange&rockland
+11,schoharie,667.0,10-24-2026 00:00:00,dcec
+12,schuyler,71.0,10-24-2026 00:00:00,stubenrec
+13,steuben,5276.0,10-24-2026 00:00:00,stubenrec
+14,sullivan,11569.0,10-24-2026 00:00:00,orange&rockland
+15,ulster,6.0,10-24-2026 00:00:00,orange&rockland
+16,westchester,368028.0,10-24-2026 00:00:00,conedison

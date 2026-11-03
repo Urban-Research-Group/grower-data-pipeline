@@ -1,14 +1,10 @@
 raw,standard
 county,county
+area_name,county
+town,county
 name,county
-County,county
 cust_a,per_outage_customers_affected
-percent_cust_a,per_outage_customers_affected
-n_out,per_outage_customers_affected
-# Out,per_outage_customers_affected
-% Out,per_outage_customers_affected
-customersAffected,per_outage_customers_affected
-customersOutNow,per_outage_customers_affected
+# out,per_outage_customers_affected
 cust_s,customers_served
-customersServed,customers_served
+# served,customers_served
 timestamp,timestamp

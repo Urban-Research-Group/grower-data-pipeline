@@ -1,0 +1,5 @@
+# Providers whose rows are towns/neighborhoods, not counties.
+# standardize.aggregate_town_level sums them to one row per county per timestamp.
+conedison
+orange&rockland
+stubenrec

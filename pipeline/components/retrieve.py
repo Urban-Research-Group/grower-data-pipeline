@@ -1,5 +1,5 @@
 from pipeline.base import Component, DataWrapper
-from pipeline.config import get_state_retrieve_params
+from pipeline.config import get_state_retrieve_params, is_wanted_file
 from pipeline.reporting import print_retrieve_bytes_summary, print_utilization_report
 import boto3
 import pandas as pd
@@ -92,8 +92,8 @@ class DataRetrievalS3(Component):
         for obj in response["Contents"]:
             key = obj["Key"]
 
-            # Match any variation of "per_county" in the file name (case-insensitive)
-            if key.lower().endswith(".csv") and re.search(r"per[_]?count(y|ies)?", key, re.IGNORECASE):
+            # Match the state's file pattern (default: any variation of "per_county") minus exclusions
+            if is_wanted_file(key, params):
                 meta = s3.head_object(Bucket=self.bucket, Key=key)
                 f_size = meta["ContentLength"]
                 last_modified = meta["LastModified"]
@@ -252,12 +252,13 @@ class DataRetrievalS3(Component):
             print(f"No files found for state: {self.state}")
             return []
 
+        params = get_state_retrieve_params(self.state)
         dfs = []
 
         for obj in response["Contents"]:
             key = obj["Key"]
 
-            if key.lower().endswith(".csv") and re.search(r"per[_]?count(y|ies)?", key, re.IGNORECASE):
+            if is_wanted_file(key, params):
                 s3_obj = s3.get_object(Bucket=self.bucket, Key=key)
                 df = pd.read_csv(io.BytesIO(s3_obj["Body"].read()), low_memory=False)
                 

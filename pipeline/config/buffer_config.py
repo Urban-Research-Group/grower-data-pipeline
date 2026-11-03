@@ -5,6 +5,7 @@ Load S3 retrieve buffer settings from retrieve_buffers.yaml (defaults + per-stat
 from __future__ import annotations
 
 import os
+import re
 from functools import lru_cache
 from typing import Any, TypedDict
 
@@ -22,6 +23,12 @@ class RetrieveParams(TypedDict):
     # Row-level: share of rows in the parsed head+tail chunk that match target date (0–1)
     utilization_threshold_high: float  # at or above → likely expand tail (see retrieve.py)
     utilization_log_low: float  # at or below → log for manual shrink review only
+    # Which raw files to read: regex the S3 key must match, plus substrings that exclude a key
+    file_pattern: str
+    exclude_files: list[str]
+
+
+DEFAULT_FILE_PATTERN = r"per[_]?count(y|ies)?"
 
 
 def _load_merged_for_state(state_key: str) -> dict[str, Any]:
@@ -60,7 +67,19 @@ def _get_state_retrieve_params_cached(state_key: str) -> RetrieveParams:
         "use_optimization": bool(merged["use_optimization"]),
         "utilization_threshold_high": float(merged.get("utilization_threshold_high", 0.8)),
         "utilization_log_low": float(merged.get("utilization_log_low", 0.3)),
+        "file_pattern": str(merged.get("file_pattern") or DEFAULT_FILE_PATTERN),
+        "exclude_files": [str(s).lower() for s in (merged.get("exclude_files") or [])],
     }
+
+
+def is_wanted_file(key: str, params: RetrieveParams) -> bool:
+    """True if an S3 key is a CSV this state's pipeline should read."""
+    lowered = key.lower()
+    if not lowered.endswith(".csv"):
+        return False
+    if not re.search(params["file_pattern"], key, re.IGNORECASE):
+        return False
+    return not any(s in lowered for s in params["exclude_files"])
 
 
 def clear_buffer_config_cache() -> None:

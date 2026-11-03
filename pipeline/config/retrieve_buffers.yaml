@@ -25,3 +25,12 @@ states:
   ms: { tail_bytes: 150000 }
   nc: { tail_bytes: 25000 }
   sc: { tail_bytes: 100000 }
+  ny:
+    # Con Ed reports NYC by network ("per_borough") and Westchester by town ("per_area");
+    # Steuben REC reports by town. All are mapped to counties in mappings/NY/county_map.csv.
+    file_pattern: 'per[_]?(count(y|ies)?|borough|area|town)'
+    exclude_files:
+      - new_jersey      # Orange & Rockland's New Jersey file
+      - sussexrec       # Sussex REC is a New Jersey co-op
+      - nationalgrid    # files under ny/ contain only Massachusetts rows (state == MA)
+      - served_dcec     # DCEC town list duplicates per_County_dcec
