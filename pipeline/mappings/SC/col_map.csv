@@ -5,7 +5,6 @@ County,county
 CountyName,county
 cust_a,per_outage_customers_affected
 # Out,per_outage_customers_affected
-% Out,per_outage_customers_affected
 percent_cust_a,per_outage_customers_affected
 n_out,per_outage_customers_affected
 customersAffected,per_outage_customers_affected

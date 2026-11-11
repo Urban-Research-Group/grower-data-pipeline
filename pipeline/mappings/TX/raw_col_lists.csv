@@ -1,14 +1,13 @@
 county,customers_served,per_outage_customers_affected,timestamp
 COUNTY,CUSTOMERS SERVED,% Affected,timestamp
 Counties,# Served,# Out,
-countyname,CustomersServed,% Out,
+countyname,CustomersServed,,
 CountyName,customersServed,out,
 name,cust_s,CustomersAffected,
 area_name,total_cust,customersOutNow,
 ,count,cust_a,
 ,accounts,percent_cust_a,
 ,,n_out,
-,,pctOut,
 ,,customersAffected,
 ,,affected,
 ,,CUSTOMER OUTAGES,

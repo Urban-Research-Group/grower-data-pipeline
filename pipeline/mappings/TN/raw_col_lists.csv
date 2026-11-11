@@ -1,7 +1,6 @@
 county,customers_served,per_outage_customers_affected,timestamp
-Name,Served,pctOut,timestamp
+Name,Served,,timestamp
 County,customersServed,out,
 county,# Served,customersAffected,
 name,,customersOutNow,
 County.,,# Out,
-,,% Out,

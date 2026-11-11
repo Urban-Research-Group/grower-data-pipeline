@@ -210,7 +210,13 @@ class Standardize(Component):
         Bad data is classified as null, empty, or unknown county values and missing customers served values.
 
         For bad county data, we drop those values. For missing customers served values, we require a '% out'
-        and total number affected columns to estimate the number of customers served as affected / % out. 
+        and total number affected columns to estimate the number of customers served as affected / % out.
+
+        The estimate is made for each row that is missing customers served, not only when the column is
+        absent. When providers are combined into one DataFrame, a provider that never reports customers
+        served still gets an empty customers_served column from the other providers, so checking for the
+        column alone would skip the estimate and drop all of that provider's rows.
+
         When providers give values with the prefix '<', we strip the '<' and treat it as an exact value. However,
         more robust methods may be required.
         """
@@ -220,39 +226,49 @@ class Standardize(Component):
         data = data[~data['county'].isin(['unknown', 'Unknown', 'UNKNOWN', ''])].copy()
 
         data.columns = data.columns.str.strip().str.lower()
-        
-        # If customers served data is missing, estimate it using affected / % out
-        if "% out" in data.columns:
-            if "customers_served" in data.columns:
-                data.drop(columns="% out", inplace=True)
-            else:
-                # TODO: figure out how to handle "<" more robustly
-                # For a county on a given day, if all % outs are "<" estimations, pull from historical
-                # If a county has at least 1 "valid" % out entry then use that for the rest of its timestamps for that day
 
-                # FOR LATER USE (WIP)
-                mask = ~data['% out'].astype(str).str.contains('<', na=True)
-                valid_rows = data[mask]
-                
-                # Standardize "< xx.xx%" to "xx.xx"
-                data['% out'] = (
+        if "% out" in data.columns:
+            # TODO: estimates from rounded or "<" % out values can be far off when few customers are out.
+            # See docs/known-issues/pipeline-data-issues.md, issue 6.
+            estimate = pd.Series(np.nan, index=data.index)
+
+            if "per_outage_customers_affected" in data.columns:
+                # Standardize "< xx.xx%" to a decimal fraction
+                pct = pd.to_numeric(
                     data['% out'].astype(str)
                     .str.replace('<', '', regex=False)
-                    .str.rstrip('%')
-                    .replace('', np.nan)
-                )
-                # Convert decimal to percent
-                data['% out'] = pd.to_numeric(data['% out'], errors='coerce') / 100
-                # Calculate esimated customers served
-                data['customers_served'] = np.where(
-                    (data['% out'].notna()) & (data['% out'] != 0),
-                    (data['per_outage_customers_affected'].astype(float) / data['% out']).round().astype("Int64"),
-                    np.nan
-                )
-                # Remove % out column as it is no longer needed
-                data.drop(columns=['% out'], inplace=True)
+                    .str.replace('%', '', regex=False)
+                    .str.strip(),
+                    errors='coerce'
+                ) / 100
+
+                affected = self.to_number(data['per_outage_customers_affected'])
+                estimate = (affected / pct).where(pct > 0).round()
+
+            # Keep reported customers served values and estimate only the missing ones
+            if "customers_served" in data.columns:
+                served = self.to_number(data['customers_served'])
+                data['customers_served'] = served.where(served.notna(), estimate)
+            else:
+                data['customers_served'] = estimate
+
+            # Remove % out column as it is no longer needed
+            data.drop(columns=['% out'], inplace=True)
 
         return data
+
+    @staticmethod
+    def to_number(col):
+        """
+        Converts a column to numbers, removing quotes and thousands separators. Values that can't be read
+        become NaN.
+        """
+        return pd.to_numeric(
+            col.astype(str)
+            .str.replace('"', '', regex=False)
+            .str.replace(',', '', regex=False),
+            errors='coerce'
+        )
 
     def standardize_data_types(self, data):
         """

@@ -1,7 +1,7 @@
 county,customers_served,per_outage_customers_affected,timestamp
 name,cust_s,cust_a,timestamp
 Counties,CustomersServed,# Out,
-County,customersServed,% Out,
+County,customersServed,,
 CountyName,# Served,percent_cust_a,
 areaid,,n_out,
 ,,customersAffected,

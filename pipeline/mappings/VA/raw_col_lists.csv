@@ -1,5 +1,5 @@
 county,customers_served,per_outage_customers_affected,timestamp
 Counties,# Served,cust_a,timestamp
-county,cust_s,% Out,
+county,cust_s,,
 County,,# Out,
 area_name,,,

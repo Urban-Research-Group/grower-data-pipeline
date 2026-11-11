@@ -9,7 +9,6 @@ Affected Customers,customers_served
 Percentage Affected,per_outage_customers_affected
 cust_a,per_outage_customers_affected
 # Out,per_outage_customers_affected
-% Out,per_outage_customers_affected
 customersServed,customers_served
 CustomersServed,customers_served
 # Served,customers_served
