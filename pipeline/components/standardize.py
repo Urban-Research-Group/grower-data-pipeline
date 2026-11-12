@@ -229,7 +229,7 @@ class Standardize(Component):
 
         if "% out" in data.columns:
             # TODO: estimates from rounded or "<" % out values can be far off when few customers are out.
-            # See docs/known-issues/pipeline-data-issues.md, issue 6.
+            # See discussions #37 [Open] Known pipeline and source data issues, issue 6.
             estimate = pd.Series(np.nan, index=data.index)
 
             if "per_outage_customers_affected" in data.columns:
