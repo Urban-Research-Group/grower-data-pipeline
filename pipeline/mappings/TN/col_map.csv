@@ -1,12 +1,11 @@
 raw,standard
 Name,county
 County,county
-pctOut,per_outage_customers_affected
+pctOut,% out
 out,per_outage_customers_affected
 customersAffected,per_outage_customers_affected
 customersOutNow,per_outage_customers_affected
 # Out,per_outage_customers_affected
-% Out,per_outage_customers_affected
 county,county
 Served,customers_served
 customersServed,customers_served
