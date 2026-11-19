@@ -180,28 +180,27 @@ class Standardize(Component):
         drop_cols = [c for c in data.columns if c not in allowed]
         data.drop(columns=drop_cols, inplace=True)
         
-        # Handle duplicate columns
+        # Handle duplicate columns: several raw columns can map to the same standardized name.
+        # Keep the first non-empty value in each row, then write it back to a single column.
+        # (Writing to a name that still labels several columns lets pandas fill rows across the
+        # columns instead of down them, which corrupted values when rows == duplicate columns.)
         dupes = data.columns[data.columns.duplicated()].unique()
 
         for col in dupes:
-            cols = [c for c in data.columns if c == col]
+            first = list(data.columns).index(col)
 
-            # Extract duplicate columns as a small DataFrame
-            block = data[cols]
+            # In each row, take the first value from the left that is not missing or blank
+            values = data.loc[:, data.columns == col].to_numpy(dtype=object)
+            blank = pd.isna(values) | (np.char.strip(values.astype(str)) == "")
+            pick = (~blank).argmax(axis=1)
+            merged = values[np.arange(len(values)), pick]
+            merged[blank.all(axis=1)] = None
+            merged = pd.Series(merged, index=data.index).infer_objects()
 
-            # Pick the first valid value
-            merged = block.apply(
-                lambda row: next(
-                    (v for v in row 
-                    if pd.notna(v) and str(v).strip() != ""),
-                    None
-                ),
-                axis=1
-            )
+            # Drop every copy of the column, then insert the merged values once
+            data = data.loc[:, data.columns != col].copy()
+            data.insert(first, col, merged.to_numpy())
 
-            data[cols[0]] = merged.to_numpy()
-        
-        data = data.loc[:, ~data.columns.duplicated(keep="first")]
         return data
 
     # Handles back, missing, and unknown data
